@@ -19,14 +19,19 @@ public class CedulaNombreAppServices : ICedulaNombreAppServices
             {"1234567890", "Joaquin Romero"}
         } ;
 
+        logger.LogInformation("Obtener por cedula");
+
         var valor = cedulaNombre[cedula];
         // 
         var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(valor);
         System.Convert.ToBase64String(plainTextBytes);
+        //logger.LogInformation(plainTextBytes);
 
         var resultado = new CedulaNombre();
         resultado.Cedula=cedula;
         resultado.Nombre=valor;
+
+        logger.LogTrace("Hola");
 
         return resultado; 
     }
