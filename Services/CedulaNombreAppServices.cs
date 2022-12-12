@@ -24,14 +24,16 @@ public class CedulaNombreAppServices : ICedulaNombreAppServices
         var valor = cedulaNombre[cedula];
         // 
         var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(valor);
-        System.Convert.ToBase64String(plainTextBytes);
-        //logger.LogInformation(plainTextBytes);
+        
+        logger.LogInformation(System.Convert.ToBase64String(plainTextBytes));
 
         var resultado = new CedulaNombre();
         resultado.Cedula=cedula;
-        resultado.Nombre=valor;
+        resultado.Nombre=System.Convert.ToBase64String(plainTextBytes);
 
-        logger.LogTrace("Hola");
+
+        logger.LogInformation($"||METODO GET||Cedula:{System.Convert.ToBase64String(plainTextBytes)}||CODIGO 200");
+        logger.LogTrace($"||METODO GET||Cedula:{System.Convert.ToBase64String(plainTextBytes)}||CODIGO 200");
 
         return resultado; 
     }
